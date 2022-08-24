@@ -22,8 +22,10 @@ public class Car : MonoBehaviour
     private void FixedUpdate()
     {
         float steer = maxSteerAngle * -input.x;
-        tires[0].transform.eulerAngles = Vector3.forward * steer;
-        tires[1].transform.eulerAngles = Vector3.forward * steer;
+        //tires[0].transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + steer);
+        //tires[1].transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z + steer);
+        tires[0].Steer(transform.eulerAngles.z + steer);
+        tires[1].Steer(transform.eulerAngles.z + steer);
         tires[2].Accelerate(input.y * acceleration);
         tires[3].Accelerate(input.y * acceleration);
         //Translated tutorial code
