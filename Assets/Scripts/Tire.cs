@@ -8,6 +8,8 @@ public class Tire : MonoBehaviour
     public HingeJoint2D joint;
     public Vector2 pos = Vector2.zero;
     Vector2 fricForce = Vector2.zero;
+    ///<summary>The actual rotational speed of the tire, </summary>
+    public float spinSpeed = 0f;
     ///<summary>The friction of the tire on it's side </summary>
     public float staticFriction;
     ///<summary>The friction of the tire on the direction it rolls</summary>
@@ -50,7 +52,7 @@ public class Tire : MonoBehaviour
     {
         if (!Application.isPlaying) return;
         Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(transform.position, (Vector2)transform.position + tireRb.velocity);
+        Gizmos.DrawLine(transform.position, (Vector2)transform.position + tireRb.velocity / 3f);
         Vector2 vel = RotateVector(tireRb.velocity, transform.eulerAngles.z);
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, (Vector2)transform.position + fricForce);
